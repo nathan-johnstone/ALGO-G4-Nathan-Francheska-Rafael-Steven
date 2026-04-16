@@ -12,6 +12,7 @@ FONCTION verifEmprunt(ret, med)
 FIN FONCTION
 
 ALGORITHME PRINCIPAL
+DEMANDER à la BDD les données retard et media du client
 VerificationEmprunt <- verifEmprunt(retard, media)
    AFFICHER VerificationEmprunt
 
