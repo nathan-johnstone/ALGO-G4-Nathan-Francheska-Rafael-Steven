@@ -1,0 +1,47 @@
+FONCTION verifEmprunt(ret, med)
+   SI ret >= 1
+      AFFICHER "Nouvel emprunt interdit, car" + ret + "retard en cours"
+   FIN SI
+   SINON SI med >= 5
+      AFFICHER "Nouvel emprunt interdit, déjà" + med + "emprunts en cours"
+   FIN SI
+   SINON
+      compteur <- 5 - med
+      AFFICHER "Le client a le droit d'emprunter" + compteur + "medias"
+   FIN SI
+FIN FONCTION
+
+ALGORITHME PRINCIPAL
+VerificationEmprunt <- verifEmprunt(retard, media)
+   AFFICHER VerificationEmprunt
+
+
+
+ - l’adhérent a emprunté 3 médias, et n’a aucun retard en cours : 
+
+FONCTION verifEmprunt(0, 3)
+retard : 0 < 1 OK
+media : 3 < 5 OK 
+DONC compteur <- 5 - 3 = 2 -> Le client a le droit d'emprunter 2 medias
+
+
+ - l’adhérent a emprunté 5 médias, et n’a aucun retard en cours : 
+
+FONCTION verifEmprunt(0, 5)
+retard : 0 < 1 OK
+media : 5 = 5 DONC Nouvel emprunt interdit, déjà 5 emprunts en cours
+
+
+ - l’adhérent a emprunté 5 médias, et a 2 retards en cours : 
+
+FONCTION verifEmprunt(2, 5)
+retard : 2 > 1 DONC Nouvel emprunt interdit, car 2 retard en cours
+      
+
+ - l’adhérent a emprunté 4 médias, et a 3 retards en cours : 
+
+FONCTION verifEmprunt(3, 4)
+retard : 3 > 1 DONC Nouvel emprunt interdit, car 3 retard en cours
+
+
+   
