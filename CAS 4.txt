@@ -1,0 +1,89 @@
+Cas 4 — Gérer les retours et les retards
+
+Situation : En fin de journée, la médiathèque traite tous les retours de la journée. Pour chaque retour, elle doit vérifier si l'emprunt est en retard et, si oui, calculer le nombre de jours de retard.
+
+1. Décrire l'algorithme qui traite une liste de retours et identifie les retards.
+2. Comment calculer le nombre de jours de retard et l'afficher avec le nom de l'adhérent ?
+3. Créer 1 tableau de 4 livres, 4 CD audios, et 4 DVD, en suivant le modèle suivant : [ [œuvre 1, date limite de retour], [œuvre 2, date limite de retour], [œuvre 3, date limite de retour] ]
+4. Effectuer le traçage en prenant comme date des retours le 16/04/2026
+
+
+// FONCTIONS
+
+retourner tabType(type)
+    SI type == "livre"
+        tab ← tabLivres
+    SINON SI type == "CD"
+        tab ← tabCD
+    SINON SI type == "DVD"
+        tab ← tabDVD
+    FIN SI
+    RETOURNER faux
+FIN
+
+FONCTION retardLimite(tableau, valeur)
+	POUR i de 0 à longeur(tableau) – 1
+		SI tableau[i][0] = valeur
+			RETOURNER tableau[i][0]
+		FIN SI
+	FIN POUR
+	RETOURNER faux
+FIN
+
+FONCTION nomAdherant(tableau, valeur)
+	POUR i de 0 à longeur(tableau) – 1
+		SI tableau[i][0] = valeur
+			RETOURNER tableau[i][0]
+		FIN SI
+	FIN POUR
+	RETOURNER faux
+FIN
+
+
+// ALGO PRINCIPALE
+// variables
+
+tabLivres ← [["Livre1", "2026-04-10"],["Livre2", "YYYY-MM-DD"],["Live3", "YYYY-MM-DD"],["Livre4", "YYYY-MM-DD"]]
+tabCD ← [["CD1", "YYYY-MM-DD"],["CD2", "YYYY-MM-DD"],[CD3, "YYYY-MM-DD"],[CD4, "YYYY-MM-DD"]]
+tabDVD ← [["DVD1", "YYYY-MM-DD"],[DVD2, "YYYY-MM-DD"],[DVD3, "YYYY-MM-DD"],[DVD4, "YYYY-MM-DD"]]
+empruntsEnCours ← [["Livre1","Jean DURAND"], ["Livre2","Nom de l'adhérant 2"]... ] // format de la liste des oeuvres empruntés
+
+dateRetour ← 2026-04-16
+
+// entrées
+
+DEMANDER le nom oeuvre retourné
+oeuvreRetourne ← oeuvre entré
+DEMANDER le type d'oeuvre retourné
+oeuvreType ← type entré
+
+SI oeuvreRetourne !== null ET oeuvreType !== null
+    SI tabType(oeuvreType) == null
+        AFFICHER "Type d\'oeuvre pas trouvé"
+    SINON
+    tab ← tabType(oeuvreType)
+    dateLimite ← retardLimite(tab, oeuvreRetourne)
+    retardJ ← dateLimite - dateRetour
+    SI retardJ > 0
+        AFFICHER "Nombre de jours de retard : " + retardJ + "jour(s)"
+        AFFICHER "Nom de l\'adhérent" + nomAdherant(empruntsEnCours, oeuvreRetourne)
+    SINON
+        AFFICHER "Pas de retard"
+    FIN SI
+FIN SI
+
+
+// TRACAGE
+
+Le nom oeuvre retourné : Livre1
+oeuvreRetourne ← "Livre1"
+Le type d'oeuvre retourné : Livre
+oeuvreType ← "Livre"
+
+"Livre1" !== null ET "Livre" !== null
+    tab ← tabLivres
+    dateLimite ← 2026-04-10
+    retardJ ← 2026-04-10 - 2026-04-16
+    6 > 0
+        Nombre de jours de retard : 6 jour(s)
+        Nom de l'adhérent Jean DURAND
