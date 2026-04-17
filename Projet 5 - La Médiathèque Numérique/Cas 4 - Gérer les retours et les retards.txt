@@ -10,7 +10,8 @@ Situation : En fin de journée, la médiathèque traite tous les retours de la j
 
 // FONCTIONS
 
-retourner tabType(type)
+
+FONCTION tabType(type)
     SI type == "livre"
         tab ← tabLivres
     SINON SI type == "CD"
@@ -41,16 +42,14 @@ FIN
 
 
 // ALGO PRINCIPALE
-// variables
 
 tabLivres ← [["Livre1", "2026-04-10"],["Livre2", "YYYY-MM-DD"],["Live3", "YYYY-MM-DD"],["Livre4", "YYYY-MM-DD"]]
 tabCD ← [["CD1", "YYYY-MM-DD"],["CD2", "YYYY-MM-DD"],[CD3, "YYYY-MM-DD"],[CD4, "YYYY-MM-DD"]]
 tabDVD ← [["DVD1", "YYYY-MM-DD"],[DVD2, "YYYY-MM-DD"],[DVD3, "YYYY-MM-DD"],[DVD4, "YYYY-MM-DD"]]
-empruntsEnCours ← [["Livre1","Jean DURAND"], ["Livre2","Nom de l'adhérant 2"]... ] // format de la liste des oeuvres empruntés
+
+empruntsEnCours ← [["Livre1","Jean DURAND"], ["DVD1","Nom de l'adhérant 2"]... ] // format de la liste des oeuvres empruntés
 
 dateRetour ← 2026-04-16
-
-// entrées
 
 DEMANDER le nom oeuvre retourné
 oeuvreRetourne ← oeuvre entré
@@ -58,7 +57,7 @@ DEMANDER le type d'oeuvre retourné
 oeuvreType ← type entré
 
 SI oeuvreRetourne !== null ET oeuvreType !== null
-    SI tabType(oeuvreType) == null
+    SI tabType(oeuvreType) == faux
         AFFICHER "Type d\'oeuvre pas trouvé"
     SINON
     tab ← tabType(oeuvreType)
@@ -66,9 +65,7 @@ SI oeuvreRetourne !== null ET oeuvreType !== null
     retardJ ← dateLimite - dateRetour
     SI retardJ > 0
         AFFICHER "Nombre de jours de retard : " + retardJ + "jour(s)"
-        AFFICHER "Nom de l\'adhérent" + nomAdherant(empruntsEnCours, oeuvreRetourne)
-    SINON
-        AFFICHER "Pas de retard"
+        AFFICHER "Nom de l\'adhérent : " + nomAdherant(empruntsEnCours, oeuvreRetourne)
     FIN SI
 FIN SI
 
@@ -86,4 +83,4 @@ oeuvreType ← "Livre"
     retardJ ← 2026-04-10 - 2026-04-16
     6 > 0
         Nombre de jours de retard : 6 jour(s)
-        Nom de l'adhérent Jean DURAND
+        Nom de l'adhérent : Jean DURAND
