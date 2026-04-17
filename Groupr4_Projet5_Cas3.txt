@@ -29,13 +29,13 @@ n ← longueur(tableau)
 FIN FONCTION
 
 // PROGRAMME PRINCIPALE
-Oeuvres Populaires : [ [œuvre 1, 102], [œuvre 2, 56], [œuvre 3, 49],[œuvre 4, 80]]
+// Oeuvres Populaires : [ [œuvre 1, 102], [œuvre 2, 56], [œuvre 3, 49],[œuvre 4, 80]]
 
 oeuvresPopulaires <- [ 
-    [œuvre 1, 102] 
-    [œuvre 2, 56] 
-    [œuvre 3, 49] 
-    [œuvre 4, 80]
+    ["œuvre 1", 102], 
+    ["œuvre 2", 56],
+    ["œuvre 3", 49], 
+    ["œuvre 4", 80],
     ]
 oeuvresPopulairestrie <- triABulles(oeuvresPopulaires)
 AFFICHER  oeuvresPopulairestrie[0][0] +" est la 1ère oeuvre la plus populaire"
@@ -49,13 +49,13 @@ __________________________________________________________
 
 __________________________________________________________
 // PROGRAMME POUR LES LIVRES
-Livres Populaires : [ [livre 1, 48], [livre 2, 79], [livre 3, 23],[livre 4, 130]]
+// Livres Populaires : [ [livre 1, 48], [livre 2, 79], [livre 3, 23],[livre 4, 130]]
 
 livresPopulaires <- [ 
-    [livre 1, 48] 
-    [livre 2, 79] 
-    [livre 3, 23] 
-    [livre 4, 130]
+    ["livre 1", 48], 
+    ["livre 2", 79], 
+    ["livre 3", 23], 
+    ["livre 4", 130],
     ]
     livresPopulairestrie <- triABulles(livresPopulaires)
 AFFICHER  livresPopulairestrie[0][0] +" est la 1er livre le plus populaire"
@@ -67,7 +67,7 @@ AFFICHER  livresPopulairestrie[2][0] +" est la 3ème livre le plus populaire"
 Pour i = 0
 Pour j = 0
     [livre 1, 48] 
-    [livre 2, 79] 
+    [livre 2, 79]
     [livre 3, 23] 
     [livre 4, 130]
 livresPopulaires[0][1] < livresPopulaires[1][1] | 48 < 79 -> vrai donc échanger 48 et 79 
@@ -141,13 +141,13 @@ __________________________________________________________
 __________________________________________________________
 
 // PROGRAMME POUR LES CD
-CD Populaires : [ [CD 1, 59], [CD 2, 39], [CD 3, 45],[CD 4, 90]]
+// CD Populaires : [ [CD 1, 59], [CD 2, 39], [CD 3, 45],[CD 4, 90]]
 
 cdPopulaires <- [ 
-    [CD 1, 59] 
-    [CD 2, 39] 
-    [CD 3, 45] 
-    [CD 4, 90]
+    ["CD 1", 59], 
+    ["CD 2", 39], 
+    ["CD 3", 45], 
+    ["CD 4", 90],
     ]
     cdPopulairestrie <- triABulles(cdPopulaires)
 AFFICHER  cdPopulairestrie[0][0] +" est la 1er CD le plus populaire"
@@ -231,13 +231,13 @@ __________________________________________________________
 
 __________________________________________________________
 // PROGRAMME POUR LES DVD
-DVD Populaires : [ [DVD 1, 16], [DVD 2, 69], [DVD 3, 53],[DCD 4, 40]]
+// DVD Populaires : [ [DVD 1, 16], [DVD 2, 69], [DVD 3, 53],[DCD 4, 40]]
 
 dvdPopulaires <- [ 
-    [DCD 1, 16] 
-    [DVD 2, 69] 
-    [DVD 3, 53] 
-    [DVD 4, 40]
+    ["DCD 1", 16], 
+    ["DVD 2", 69],
+    ["DVD 3", 53], 
+    ["DVD 4", 40],
     ]
     dvdPopulairestrie <- triABulles(dvdPopulaires)
 AFFICHER  dvdPopulairestrie[0][0] +" est la 1er DVD le plus populaire"
