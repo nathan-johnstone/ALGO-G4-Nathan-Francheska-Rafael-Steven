@@ -1,0 +1,48 @@
+FONCTION triParSelection(tableau)
+    n ← longueur(tableau)
+
+    POUR i de 0 à n – 2
+	indexMin ← i
+
+        POUR j de i + 1 à n – 1
+	     SI tableau[j] < tableau[indexMin]
+                 indexMin ← j
+             FIN SI
+        FIN POUR 
+
+// Échanger l'élément minimum avec l'élément en position i
+        SI indexMin ≠ i
+           temp ← tableau[i]
+           tableau[i] ← tableau[indexMin]
+           tableau[indexMin] ← temp
+        FIN SI
+    FIN POUR
+    RETOURNER tableau
+FIN FONCTION
+
+Variables d'entrée : 
+- tabAntidouleur ← [["Amoxicilline",5,8.90], ["Ibuprofène",3,5.45], ["Paracétamol",0,1.90],
+
+	          ["Aspirine",3,5.90], ["Naproxène",11,9.45]],["Indométacine",0,3.95], ["Tramadol",7,12.90]]
+-stockVide ← 0 
+
+Algorithme principal: 
+
+//Appliquer FONCTION triParSelection (tableau) à tabAntidouleur
+
+tabAntidouleurtrie ← triParSelection(tabAntidouleur)
+AFFICHER tabAntidouleurtrie
+
+POUR i de 0 à taille tabAntidouleurtrie-1
+	SI tabAntidouleurtrie[i][1] > 0 
+          AFFICHER tabAntidouleurtrie[i]
+	SORTIE boucle
+	FIN SI
+	SI tabAntidouleurtrie[i][1] = 0
+	  stockVide ← stockVide + 1  
+	FIN SI
+FIN POUR
+
+SI stockVide == taille tabAntidouleurtrie
+AFFICHER "Mettre à jour le stock, il n'y a plus d'antidouleurs à vendre"
+FIN SI 
