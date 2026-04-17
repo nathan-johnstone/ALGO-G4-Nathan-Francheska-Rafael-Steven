@@ -1,0 +1,53 @@
+aujourdhui <- jj/mm/aaaa
+
+FONCTION alerte_peremption(tab)
+   POUR i de 0 à taille de tab -1
+     SI tab[i][1] - aujourd'hui < 0
+       AFFICHER "Médicament" + tab[i][0] + "périmé. A retirer !"
+     SINON SI tab[i][1] - aujourd'hui >= 0 ET tab[i][1] - aujourd'hui <= 30
+       AFFICHER "Médicament" + tab[i][0] + "périme bientôt le" + tab[i][1] +  ". A surveiller !"
+     FIN SI
+   FIN POUR
+FIN FONCTION
+
+
+
+
+tab_medoc <- [ [Alfatil, 03/04/2026] , [Neupro, 07/07/2027] , [Estreva, 28/05/2026] 
+  [Ramipril, 25/04/2026] , [Dafalgan, 18/04/2026] , [Bevitine, 14/04/2026] 
+  [Valdoxan, 10/02/2027]
+]
+
+
+aujourdhui <- 16/04/2026
+alerte_peremption(tab_medoc)
+
+
+Tour 1 (i=0)
+03/04/2026 - 16/04/2026 < 0 DONC AFFICHE : Médicament Alfatil périmé. A retirer !
+
+Tour 2 (i=1)
+07/07/2027 - 16/04/2026 > 30 DONC NON AFFICHÉ
+
+Tour 3 (i=2)
+28/05/2026 - 16/04/2026 > 30 DONC NON AFFICHÉ
+
+Tour 4 (i=3)
+25/04/2026 - 16/04/2026 > 0 ET < 30 DONC : Médicament Ramipril périme bientôt le 25/04/2026. A surveiller !
+
+Tour 5 (i=4)
+18/04/2026 - 16/04/2026 > 0 ET < 30 DONC : Médicament Dafalgan périme bientôt le 18/04/2026. A surveiller !
+
+Tour 6 (i=5)
+14/04/2026 - 16/04/2026 < 0 DONC AFFICHE : Médicament Bevitine périmé. A retirer !
+
+Tour 7 (i=6)
+10/02/2027 - 16/04/2026 > 30 DONC NON AFFICHÉ
+
+FIN FONCTION
+
+
+
+
+
+
