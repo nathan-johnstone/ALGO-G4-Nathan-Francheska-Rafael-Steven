@@ -1,0 +1,130 @@
+CAS 1 - DÉLIVRER UN MÉDICAMENT SUR ORDONNANCE
+Situation : Un patient présente une ordonnance pour de l'amoxiciline. Le pharmacien doit vérifier si le médicament est disponible en stock en quantité suffisante avant de le délivrer.
+
+1.Décrire l'algorithme qui vérifie la disponiblilité et délivre le médicament en mettant à jour le stock.
+2.Que faire si le stock est insuffisant pour honorer toute l'ordonnance ?
+3.Créer un tableau de 7 médicaments, accompagné de leur quantité, en suivant le modèle suivant :
+[[Amoxiciline,5],[Ozempic,0],[Paracétamol,3]]
+Effectuer le traçage de l'algorithme pour l'Amoxiciline, puis pour l'Ozempic.
+
+
+ALGORITHME
+____________________________________________________________
+FONCTION recherche(tableau,produitDemande) 
+
+trouve ← faux
+
+POUR i de 0 à longueur(tableau) – 1 
+    SI tableau[i][0] = produitDemande ALORS
+        trouve ← vrai 
+        AFFICHER produitDemande +" est trouvé à l'index " +i 
+        RETOURNER i
+    FIN SI 
+    FIN POUR 
+SI trouve = faux ALORS
+    AFFICHER "Produit non trouvé" 
+FIN SI  
+FIN FONCTION
+
+// PROGRAMME PRINCIPAL
+DEBUT
+tab <- [
+    ["Amoxiciline",5],
+    ["Ozempic",0],
+    ["Paracétamol",3]
+    ]
+DEMANDER produitDemande
+produitDemande ← produit demandé entré
+indexProduitDemande <- recherche(tableau,produitDemande)
+    SI tab[indexProduitDemande][1] >= 0 ALORS
+        tab[indexProduitDemande][1] <- tab[indexProduitDemande][1] -1
+        AFFICHER "1 Enlevé du stock, il reste" + tab[indexProduitDemande][1] +"en stock"
+    SINON 
+        AFFICHER "Pas de stock disponible pour ce produit"
+    FIN SI
+FIN
+____________________________________________________________
+
+
+____________________________________________________________
+//TRAÇAGE DE L'ALGORITHME POUR "Amoxiciline"
+listeMedicament <- [
+    ["Amoxiciline",5],
+    ["Gastropax",10],
+    ["Paracétamol",3]
+    ["Xana",10],
+    ["Viagra",6],
+    ["Spasfon",13]
+    ["Ozempic",0],
+    ]
+DEMANDER médicamentDemande
+medicamentDemande ← Amoxiciline
+indexMedicamentDemande <- recherche(listeMedicament,medicamentDemande)
+
+// Boucle 1 de i
+i = 0
+amoxiciline = amoxiciline // VRAI
+trouvé = vrai
+AFFICHER amoxiciline est trouvé à l'index 0 
+indexMedicamentDemande = 0
+SI tab [0][1] >= 0 ALORS
+tab[0][1] <- tab [0][1] -1 // tab[0][1] = 5-1 = 4  // VRAI
+AFFICHER "1 Enlevé du stock, il reste 4 en stock"
+____________________________________________________________
+
+
+
+____________________________________________________________
+//TRAÇAGE DE L'ALGORITHME POUR "Ozempic"
+listeMedicament <- [
+    ["Amoxiciline",5],
+    ["Gastropax",10],
+    ["Paracétamol",3]
+    ["Xanax",10],
+    ["Viagra",6],
+    ["Spasfon",13]
+    ["Ozempic",0],
+    ]
+DEMANDER médicamentDemande
+medicamentDemande ← Ozempic
+indexMedicamentDemande <- recherche(listeMedicament,medicamentDemande)
+
+// Boucle 1 de i
+i = 0
+amoxiciline = Ozempic // FAUX
+trouvé = faux
+    AFFICHER "Produit non trouvé" 
+
+i = 1
+Gastropax = Ozempic // FAUX
+trouvé = faux
+    AFFICHER "Produit non trouvé" 
+
+i = 2
+Paracétamol = Ozempic // FAUX
+trouvé = faux
+    AFFICHER "Produit non trouvé" 
+
+i = 3
+Xanax = Ozempic // FAUX
+trouvé = faux
+    AFFICHER "Produit non trouvé" 
+
+i = 4
+Viagra = Ozempic // FAUX
+trouvé = faux
+    AFFICHER "Produit non trouvé" 
+
+i = 5
+Spasfon = Ozempic // FAUX
+trouvé = faux
+    AFFICHER "Produit non trouvé" 
+
+i = 6
+Ozempic = Ozempic // VRAI
+trouvé = vrai
+AFFICHER Ozempic est trouvé à l'index 6 
+indexMedicamentDemande = 6
+SI tab [6][1] >= 0 ALORS // FAUX
+AFFICHER "Pas de stock disponible pour ce produit"
+____________________________________________________________
