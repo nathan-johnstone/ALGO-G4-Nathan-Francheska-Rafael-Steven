@@ -10,18 +10,6 @@ Situation : En fin de journée, la médiathèque traite tous les retours de la j
 
 // FONCTIONS
 
-
-FONCTION tabType(type)
-    SI type == "livre"
-        tab ← tabLivres
-    SINON SI type == "CD"
-        tab ← tabCD
-    SINON SI type == "DVD"
-        tab ← tabDVD
-    FIN SI
-    RETOURNER faux
-FIN
-
 FONCTION retardLimite(tableau, valeur)
 	POUR i de 0 à longeur(tableau) – 1
 		SI tableau[i][0] = valeur
@@ -57,15 +45,26 @@ DEMANDER le type d'oeuvre retourné
 oeuvreType ← type entré
 
 SI oeuvreRetourne !== null ET oeuvreType !== null
-    SI tabType(oeuvreType) == faux
-        AFFICHER "Type d\'oeuvre pas trouvé"
+    tabTrouve ← faux
+    SI oeuvreType == "Livre"
+        tab ← tabLivres
+        tabTrouve ← vrai
+    SINON SI oeuvreType == "CD"
+        tab ← tabCD
+        tabTrouve ← vrai
+    SINON SI oeuvreType == "DVD"
+        tab ← tabDVD
+        tabTrouve ← vrai
     SINON
-    tab ← tabType(oeuvreType)
-    dateLimite ← retardLimite(tab, oeuvreRetourne)
-    retardJ ← dateLimite - dateRetour
-    SI retardJ > 0
-        AFFICHER "Nombre de jours de retard : " + retardJ + "jour(s)"
-        AFFICHER "Nom de l\'adhérent : " + nomAdherant(empruntsEnCours, oeuvreRetourne)
+    AFFICHER "Type d\'oeuvre pas trouvé"
+    FIN SI
+    SI tabTrouve == vrai
+        dateLimite ← retardLimite(tab, oeuvreRetourne)
+        retardJ ← dateLimite - dateRetour
+        SI retardJ > 0
+            AFFICHER "Nombre de jours de retard : " + retardJ + "jour(s)"
+            AFFICHER "Nom de l\'adhérent : " + nomAdherant(empruntsEnCours, oeuvreRetourne)
+        FIN SI
     FIN SI
 FIN SI
 
@@ -78,7 +77,18 @@ Le type d'oeuvre retourné : Livre
 oeuvreType ← "Livre"
 
 "Livre1" !== null ET "Livre" !== null
-    tab ← tabLivres
+    tabTrouve ← faux
+    oeuvreType == "Livre"
+        tab ← tabLivres
+        tabTrouve ← vrai
+    tabTrouve == vrai
+        dateLimite ← retardLimite(tab, oeuvreRetourne)
+
+            1e tour :
+            i = 0
+            tableau[i][0] = "Livre1"
+            RETOURNER "2026-04-10"
+
     dateLimite ← 2026-04-10
     retardJ ← 2026-04-10 - 2026-04-16
     6 > 0
