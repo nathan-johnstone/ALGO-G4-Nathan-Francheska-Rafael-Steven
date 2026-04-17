@@ -1,0 +1,242 @@
+Cas 4 — Trier les médicaments par date de péremption
+Situation : Pour faciliter la gestion des rotations, le pharmacien veut afficher son stock trié par date de péremption croissante (les plus proches d'abord).
+1. Décrire l'algorithme qui trie le stock par date de péremption.
+2. Quel algorithme de tri utilisez-vous, et comment comparez-vous deux dates ?
+3. Créer un tableau de 7 médicaments, accompagné de leur date de péremption, en suivant le modèle suivant : [ [Amoxicilline, 03/04/2026] , [Ozempic, 07/07/2026] , [Paracétamol, 13/05/2026] ]
+4. Effectuer le traçage de l’algorithme 
+
+
+// FONCTIONS
+
+FONCTION triParDLC(tableau)
+	n ← longueur(tableau)
+	POUR i de 0 à n – 2
+		echange ← faux
+		POUR j de 0 à n - 2 – i
+			SI tableau[j][1] > tableau[j + 1][1]
+				temp ← tableau[j]
+				tableau[j] ← tableau[j + 1]
+				tableau[j + 1] ← temp
+				echange ← vrai
+			FIN SI
+		FIN POUR
+		SI echange == faux
+			RETOURNER tableau 
+		FIN SI
+	FIN POUR
+    RETOURNER tableau
+FIN
+
+
+// ALGO PRINCIPALE
+
+tabMedi ← [
+    ["Amoxicilline", "03/04/2026"],
+    ["Ozempic", "07/07/2026"],
+    ["Paracétamol","13/05/2026"],
+    ["Médicament4","16/07/2026"],
+    ["Médicament5","20/09/2026"],
+    ["Médicament6","10/02/2026"],
+    ["Médicament7","13/05/2026"]
+    ]
+
+tabMediTrie ← triParDLC(tabMedi)
+
+POUR i de 0 à longeur(tabMedTrie)
+    AFFICHER "Nom : " + tabMedTrie[i][0]
+    AFFICHER "DLC : " + tabMedTrie[i][1]
+    AFFICHER ""
+FIN POUR
+
+
+// TRACAGE
+
+// FONCTION triParDLC(tableau)
+
+n = 7
+
+1e tour i :
+i = 0 // max 5
+echange ← faux
+
+    1e tour j :
+    j = 0 // max 5
+    03/04/2026 > 07/07/2026 // FAUX
+
+    2e jour j :
+    j = 1
+    07/07/2026 > 13/05/2026 // VRAI
+    ["Ozempic", "07/07/2026"] échangé avec ["Paracétamol","13/05/2026"]
+    echange ← vrai
+
+    3e tour j :
+    j = 2
+    07/07/2026 > 16/07/2026 // FAUX
+
+    4e tour j :
+    j = 3
+    16/07/2026 > 20/09/2026 // FAUX
+
+    5e tour j :
+    j = 4
+    20/09/2026 > 10/02/2026 // VRAI
+    ["Médicament5","20/09/2026"] échangé avec ["Médicament6","10/02/2026"]
+    echange ← vrai
+
+    6e tour j :
+    j = 5
+    20/09/2026 > 13/05/2026 // VRAI
+    ["Médicament5","20/09/2026"] échangé avec ["Médicament7","13/05/2026"]
+    echange ← vrai
+
+tableau = [["Amoxicilline", "03/04/2026"],["Paracétamol","13/05/2026"],["Ozempic", "07/07/2026"],["Médicament4","16/07/2026"],["Médicament6","10/02/2026"],["Médicament7","13/05/2026"],["Médicament5","20/09/2026"]]
+
+2e tour i :
+i = 1
+echange ← faux
+
+    1e tour j :
+    j = 0 // max 4
+    03/04/2026 > 13/05/2026 // FAUX
+
+    2e tour j :
+    j = 1
+    13/05/2026 > 07/07/2026 // FAUX
+
+    3e tour j :
+    j = 2
+    07/07/2026 > 16/07/2026 // FAUX
+
+    4e tour j :
+    j = 3
+    16/07/2026 > 10/02/2026 // VRAI
+    ["Médicament4","16/07/2026"] échangé avec ["Médicament6","10/02/2026"]
+    echange ← vrai
+
+    5e tour j :
+    j = 4
+    16/07/2026 > 13/05/2026 // VRAI
+    ["Médicament4","16/07/2026"] échangé avec ["Médicament7","13/05/2026"]
+    echange ← vrai
+
+tableau = [["Amoxicilline", "03/04/2026"],["Paracétamol","13/05/2026"],["Ozempic", "07/07/2026"],["Médicament6","10/02/2026"],["Médicament7","13/05/2026"],["Médicament4","16/07/2026"],["Médicament5","20/09/2026"]]
+
+3e tour i :
+i = 2
+echange ← faux
+
+    1e tour j :
+    j = 0 // max 3
+    03/04/2026 > 13/05/2026 // FAUX
+
+    2e tour j :
+    j = 1
+    13/05/2026 > 07/07/2026 // FAUX
+
+    3e tour j :
+    j = 2
+    07/07/2026 > 10/02/2026 // VRAI
+    ["Ozempic", "07/07/2026"] échangé avec ["Médicament6","10/02/2026"]
+    echange ← vrai
+
+    4e tour j :
+    j = 3
+    07/07/2026 > 13/05/2026 // VRAI
+    ["Ozempic", "07/07/2026"] échangé avec ["Médicament7","13/05/2026"]
+    echange ← vrai
+
+tableau = [["Amoxicilline", "03/04/2026"],["Paracétamol","13/05/2026"],["Médicament6","10/02/2026"],["Médicament7","13/05/2026"],["Ozempic", "07/07/2026"],["Médicament4","16/07/2026"],["Médicament5","20/09/2026"]]
+
+4e tour i :
+i = 3
+echange ← faux
+
+    1e tour j :
+    j = 0 // max 2
+    03/04/2026 > 13/05/2026 // FAUX
+
+    2e tour j :
+    j = 1
+    13/05/2026 > 10/02/2026 // VRAI
+    ["Paracétamol","13/05/2026"] échangé avec ["Médicament6","10/02/2026"]
+    echange ← vrai
+
+    j = 2
+    13/05/2026 > 13/05/2026 // FAUX
+
+tableau = [["Amoxicilline", "03/04/2026"],["Médicament6","10/02/2026"],["Paracétamol","13/05/2026"],["Médicament7","13/05/2026"],["Ozempic", "07/07/2026"],["Médicament4","16/07/2026"],["Médicament5","20/09/2026"]]
+
+5e tour i :
+i = 4
+echange ← faux
+
+    1e tour j :
+    j = 0 // max 1
+    03/04/2026 > 10/02/2026 // VRAI
+    ["Amoxicilline", "03/04/2026"] échangé avec ["Médicament6","10/02/2026"]
+    echange ← vrai
+
+    2e tour j :
+    j = 1
+    03/04/2026 > 13/05/2026 // FAUX
+
+tableau = [["Médicament6","10/02/2026"],["Amoxicilline", "03/04/2026"],["Paracétamol","13/05/2026"],["Médicament7","13/05/2026"],["Ozempic", "07/07/2026"],["Médicament4","16/07/2026"],["Médicament5","20/09/2026"]]
+
+6e tour i :
+i = 5
+echange ← faux
+
+    1e tour j :
+    j = 0 // max 0
+    10/02/2026 > 03/04/2026 // FAUX
+
+    echange == faux // VRAI
+    RETOURNER tableau
+
+tabMediTrie = [["Médicament6","10/02/2026"],["Amoxicilline", "03/04/2026"],["Paracétamol","13/05/2026"],["Médicament7","13/05/2026"],["Ozempic", "07/07/2026"],["Médicament4","16/07/2026"],["Médicament5","20/09/2026"]]
+
+
+// AFFICHER LES RESULTATS
+
+
+1e tour i :
+i = 0 // max 6
+
+    Nom : Médicament6
+    DLC : 10/02/2026
+
+2e tour i :
+i = 1
+
+    Nom : Amoxicilline
+    DLC : 03/04/2026
+
+3e tour i :
+i = 2
+
+    Nom : Paracétamol
+    DLC : 13/05/2026
+
+4e tour i :
+i = 3
+
+    Nom : Médicament7
+    DLC : 13/05/2026
+
+5e tour i :
+i = 4
+
+    Nom : Ozempic
+    DLC : 07/07/2026
+
+6e tour i :
+i = 5
+
+    Nom : Médicament4
+    DLC : 16/07/2026
+
+7e tour i :
+i = 6
+
+    Nom : Médicament5
+    DLC : 20/09/2026
