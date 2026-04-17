@@ -1,0 +1,65 @@
+
+
+FONCTION rechercheDichotomique(tab, titre)
+   debut <= 0
+   fin <= longueur(tab)-1
+
+   TANT QUE debut <= fin 
+      milieu <= arrondir ((debut + fin) / 2)
+	SI nombre == tab[milieu]
+	   AFFICHER "titre trouvé, à la ligne:"+i+"et la colonne"+j 
+	   RETOURNER tab[i][1]
+	FIN SI
+        SI nombre > tab[milieu]
+	   debut <= milieu + 1
+        SINON 
+           fin <= milieu - 1 
+        FIN SI 
+    FIN TANT QUE 
+    RETOURNER faux
+FIN FONCTION
+
+Variables d'entrée : 
+titre 
+tab
+tabLivres <= [["Livre1", "Oui"],["Livre2", "Non"],["Live3", "Oui"],["Livre4", "Non"]]
+
+tabCD <= [["CD1", "Oui"],["CD2", "Non"],["CD3", "Oui"],["CD4", "Non"]]
+
+tabDVD <= [["DVD1", "Oui"],["DVD2", "Non"],["DVD3", "Oui"],["DVD4", "Non"]]
+
+
+Algorithme principal 
+Deamander type 
+type <= type demandé
+
+SI type == "livre"
+	tab <= tabLivre
+SINON SI type == "CD"
+         tab <= tabCD
+SINON SI type =="DVD"
+	 tab <= tabDVD
+FIN SI 
+
+Deamander titre 
+titre <= titre demandé 
+SI titre !== null
+	resultat <= rechercheDichotomique(tab,titre)
+	SINON SI resultat == "Oui"
+	SINON   
+		AFFICHER "Erreur lors de la récuperation du statut de disponibilité du media" 
+	FIN SI 
+FIN SI 
+
+
+Traçage pour l'album "Dangerous"
+type <= "CD"
+resultat == "Oui"
+L'album "Dangerous" de Mickael Jackson peut donc être emprunté.  
+tab <== tabCD
+titre <== "Dangerous"
+On applique la fonction rechercheDichotomique (tabCD,Dangerous)
+		AFFICHER "Disponible"
+	SINON SI resulat == "Non"
+		AFFICHER "emprunté"
+
